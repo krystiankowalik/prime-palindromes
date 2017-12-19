@@ -5,12 +5,12 @@ import com.github.krystiankowalik.model.Palindrome
 class PrimeRangeCalculator(private val numberRange: LongRange) {
 
     fun getLargestPalindromeFromMultipliedPrimes(): Palindrome {
-        val fiveDigitPrimes = generatePrimes()
+        val primes = generatePrimes()
 
         var largestPalindrome = Palindrome()
 
-        fiveDigitPrimes.forEach({ outerPrime ->
-            fiveDigitPrimes.forEach({ innerPrime ->
+        primes.forEach({ outerPrime ->
+            primes.forEach({ innerPrime ->
                 val product = outerPrime * innerPrime
                 if (product.isPalindrome() && product > largestPalindrome.value) {
                     largestPalindrome = Palindrome(product, Pair(outerPrime, innerPrime))
